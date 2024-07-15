@@ -1,0 +1,32 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class AddBalanceToExchangersTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::table('exchangers', function (Blueprint $table) {
+            $table->decimal('balance', 15, 2)->default(0); // или другой тип данных и параметры, если необходимо
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::table('exchangers', function (Blueprint $table) {
+            $table->dropColumn('balance');
+        });
+    }
+}
