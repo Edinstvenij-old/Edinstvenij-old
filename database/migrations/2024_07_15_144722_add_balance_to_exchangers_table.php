@@ -14,7 +14,7 @@ class AddBalanceToExchangersTable extends Migration
     public function up()
     {
         Schema::table('exchangers', function (Blueprint $table) {
-            $table->decimal('balance', 15, 2)->default(0); // или другой тип данных и параметры, если необходимо
+            $table->decimal('balance', 15, 2)->default(0);
         });
     }
 

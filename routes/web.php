@@ -11,8 +11,6 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('exchangers', ExchangerController::class);
 });
 
-Route::resource('exchangers', ExchangerController::class);
-Route::resource('cashiers', CashierController::class);
 Route::delete('/cashiers/{id}', [CashierController::class, 'destroy'])
     ->name('cashiers.destroy');
 
@@ -26,16 +24,11 @@ Route::middleware(['auth:sanctum', 'verified'])
     ->name('exchange-rates');
 
 Route::view('/', 'welcome');
-
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
-
 Route::view('profile', 'profile')
     ->middleware(['auth'])
     ->name('profile');
-
-
-
 
 require __DIR__.'/auth.php';

@@ -10,61 +10,85 @@ class CashierController extends Controller
 {
     public function index()
     {
-        $cashiers = Cashier::with('exchanger')->get(); // Загрузка кассиров с их обменниками
+        // Load cashiers with their associated exchangers
+        $cashiers = Cashier::with('exchanger')->get();
         return view('cashiers.index', compact('cashiers'));
     }
 
     public function create()
     {
-        $exchangers = Exchanger::all(); // Получение списка обменников для выбора
+        // Fetch all exchangers for the dropdown
+        $exchangers = Exchanger::all();
         return view('cashiers.create', compact('exchangers'));
     }
 
     public function store(Request $request)
     {
+        \Log::info('Form Data:', $request->all());
+
         $request->validate([
             'name' => 'required|string|max:255',
-            'total_exchanges' => 'required|integer|min:0',
-            'total_amount' => 'required|numeric|min:0',
-            'exchanger_id' => 'required|exists:exchangers,id', // Добавлена валидация для внешнего ключа
+            'total_exchanges' => 'required|integer',
+            'total_amount' => 'required|numeric',
+            'exchanger_id' => 'required|exists:exchangers,id',
+            'photo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
-        Cashier::create($request->all());
-        return redirect()->route('cashiers.index')->with('status', 'Cashier created successfully!');
+        $cashier = new Cashier();
+        $cashier->name = $request->name;
+        $cashier->total_exchanges = $request->total_exchanges;
+        $cashier->total_amount = $request->total_amount;
+        $cashier->exchanger_id = $request->exchanger_id;
+
+        if ($request->hasFile('photo')) {
+            $path = $request->file('photo')->store('photos', 'public');
+            $cashier->photo_url = $path;
+        }
+
+        $cashier->save();
+
+        return redirect()->route('cashiers.index')->with('status', 'Кассир успешно добавлен!');
     }
+
 
     public function edit($id)
     {
+        // Find the cashier and fetch all exchangers
         $cashier = Cashier::findOrFail($id);
-        $exchangers = Exchanger::all(); // Получение списка обменников для выбора
+        $exchangers = Exchanger::all();
         return view('cashiers.edit', compact('cashier', 'exchangers'));
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, Cashier $cashier)
     {
         $request->validate([
             'name' => 'required|string|max:255',
-            'total_exchanges' => 'required|integer|min:0',
-            'total_amount' => 'required|numeric|min:0',
-            'exchanger_id' => 'required|exists:exchangers,id', // Добавлена валидация для внешнего ключа
+            'total_exchanges' => 'required|integer',
+            'total_amount' => 'required|numeric',
+            'exchanger_id' => 'required|exists:exchangers,id',
+            'photo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
-        $cashier = Cashier::findOrFail($id);
-        $cashier->update($request->all());
+        $cashier->name = $request->name;
+        $cashier->total_exchanges = $request->total_exchanges;
+        $cashier->total_amount = $request->total_amount;
+        $cashier->exchanger_id = $request->exchanger_id;
+
+        if ($request->hasFile('photo')) {
+            $path = $request->file('photo')->store('photos', 'public');
+            $cashier->photo_url = $path;
+        }
+
+        $cashier->save();
 
         return redirect()->route('cashiers.index')->with('status', 'Cashier updated successfully!');
     }
 
     public function destroy($id)
     {
-        // Найти кассира по ID
         $cashier = Cashier::findOrFail($id);
-
-        // Удалить кассира
         $cashier->delete();
 
-        // Перенаправление с сообщением об успешном удалении
         return redirect()->route('cashiers.index')->with('status', 'Cashier deleted successfully!');
     }
-
 }

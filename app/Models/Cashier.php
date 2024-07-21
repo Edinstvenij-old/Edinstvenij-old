@@ -14,6 +14,7 @@ class Cashier extends Model
         'name',
         'total_exchanges',
         'total_amount',
+        'photo_url',
         'exchanger_id'
     ];
 

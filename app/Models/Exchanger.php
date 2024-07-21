@@ -8,10 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Exchanger extends Model
 {
     use HasFactory;
-
-    protected $fillable = ['name', 'balance'];
-
-    // Определяем связь с моделью Cashier
+    protected $fillable = ['name', 'balance', 'location'];
     /**
      * Get the cashiers for the exchanger.
      */

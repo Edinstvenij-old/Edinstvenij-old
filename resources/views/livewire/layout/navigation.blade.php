@@ -16,7 +16,7 @@ new class extends Component
 };
 ?>
 
-<nav x-data="{ open: false, cashiersOpen: false, exchangersOpen: false }" class="bg-white dark:bg-gray-800 border-b border-gray-100 dark:border-gray-700">
+<nav x-data="{ open: false, cashiersOpen: false, exchangersOpen: false }" class="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
@@ -24,7 +24,7 @@ new class extends Component
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}" wire:navigate>
-                        <x-application-logo class="block h-9 w-auto fill-current text-gray-800 dark:text-gray-200" />
+                        <x-application-logo class="block h-12 w-auto fill-current text-red-600 dark:text-red-200" />
                     </a>
                 </div>
                 <!-- Navigation Links -->
@@ -38,7 +38,7 @@ new class extends Component
             <div class="flex items-center space-x-4">
                 <!-- Cashiers Dropdown -->
                 <div class="relative">
-                    <button @click="cashiersOpen = !cashiersOpen" class="inline-flex items-center px-4 py-2 text-gray-700 dark:text-gray-200 hover:text-gray-900 dark:hover:text-gray-100 focus:outline-none">
+                    <button @click="cashiersOpen = !cashiersOpen" class="inline-flex items-center px-4 py-2 text-green-600 dark:text-gray-200 hover:text-gray-900 dark:hover:text-gray-100 focus:outline-none">
                         Cashiers
                         <svg class="w-5 h-5 ml-2 -mr-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
@@ -46,10 +46,10 @@ new class extends Component
                     </button>
                     <div x-show="cashiersOpen" @click.away="cashiersOpen = false" class="absolute right-0 w-48 mt-2 origin-top-right bg-white dark:bg-gray-800 divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5">
                         <div class="p-1">
-                            <a href="{{ route('cashiers.create') }}" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-md">
+                            <a href="{{ route('cashiers.create') }}" class="block px-4 py-2 text-sm text-green-600 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-md">
                                 Create Cashiers
                             </a>
-                            <a href="{{ route('cashiers.index') }}" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-md">
+                            <a href="{{ route('cashiers.index') }}" class="block px-4 py-2 text-sm text-green-600 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-md">
                                 All Cashiers
                             </a>
                         </div>
@@ -58,7 +58,7 @@ new class extends Component
 
                 <!-- Exchangers Dropdown -->
                 <div class="relative">
-                    <button @click="exchangersOpen = !exchangersOpen" class="inline-flex items-center px-4 py-2 text-gray-700 dark:text-gray-200 hover:text-gray-900 dark:hover:text-gray-100 focus:outline-none">
+                    <button @click="exchangersOpen = !exchangersOpen" class="inline-flex items-center px-4 py-2 text-green-600 dark:text-gray-200 hover:text-gray-900 dark:hover:text-gray-100 focus:outline-none">
                         Exchangers
                         <svg class="w-5 h-5 ml-2 -mr-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
@@ -66,10 +66,10 @@ new class extends Component
                     </button>
                     <div x-show="exchangersOpen" @click.away="exchangersOpen = false" class="absolute right-0 w-48 mt-2 origin-top-right bg-white dark:bg-gray-800 divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5">
                         <div class="p-1">
-                            <a href="{{ route('exchangers.create') }}" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-md">
+                            <a href="{{ route('exchangers.create') }}" class="block px-4 py-2 text-sm text-green-600 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-md">
                                 Create Exchangers
                             </a>
-                            <a href="{{ route('exchangers.index') }}" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-md">
+                            <a href="{{ route('exchangers.index') }}" class="block px-4 py-2 text-sm text-green-600 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-md">
                                 All Exchangers
                             </a>
                         </div>

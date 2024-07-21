@@ -9,7 +9,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
-                    <form method="POST" action="{{ route('cashiers.update', $cashier->id) }}">
+                    <form method="POST" enctype="multipart/form-data" action="{{ route('cashiers.update', $cashier->id) }}">
                         @csrf
                         @method('PUT')
                         <div class="mb-4">
@@ -33,6 +33,16 @@
                                     </option>
                                 @endforeach
                             </select>
+                        </div>
+                        <div class="mb-4">
+                            <label for="photo" class="block text-sm font-medium text-gray-700 dark:text-gray-300">{{ __('Photo') }}</label>
+                            @if($cashier->photo_url)
+                                <img src="{{ asset('storage/' . $cashier->photo_url) }}" alt="{{ $cashier->name }}" class="mb-4 h-20 w-20 rounded-full object-cover">
+                            @endif
+                            <input type="file" id="photo" name="photo" class="mt-1 block w-full rounded-md shadow-sm @error('photo') border-red-500 @enderror">
+                            @error('photo')
+                            <span class="text-red-500 text-sm">{{ $message }}</span>
+                            @enderror
                         </div>
                         <div>
                             <button type="submit" class="inline-flex items-center px-4 py-2 bg-blue-600 border border-transparent rounded-md font-semibold text-white uppercase tracking-widest hover:bg-blue-500 focus:outline-none focus:border-blue-700 focus:ring focus:ring-blue-200 active:bg-blue-600 disabled:opacity-25 transition">{{ __('Update Cashier') }}</button>
