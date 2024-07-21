@@ -17,6 +17,10 @@
                             <input type="text" id="name" name="name" value="{{ $cashier->name }}" class="mt-1 block w-full rounded-md shadow-sm" required>
                         </div>
                         <div class="mb-4">
+                            <label for="phone" class="block text-sm font-medium text-gray-700 dark:text-gray-300">{{ __('Phone') }}</label>
+                            <input type="text" id="phone" name="phone" value="{{ $cashier->phone }}" class="mt-1 block w-full rounded-md shadow-sm">
+                        </div>
+                        <div class="mb-4">
                             <label for="total_exchanges" class="block text-sm font-medium text-gray-700 dark:text-gray-300">{{ __('Total Exchanges') }}</label>
                             <input type="number" id="total_exchanges" name="total_exchanges" value="{{ $cashier->total_exchanges }}" class="mt-1 block w-full rounded-md shadow-sm" required>
                         </div>

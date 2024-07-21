@@ -11,7 +11,8 @@ class CreateExchangersTable extends Migration
         Schema::create('exchangers', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->decimal('balance', 15, 2)->default(0.00); // Баланс обменника
+            $table->decimal('balance', 15, 2)->default(0.00);
+            $table->string('location');
             $table->timestamps();
         });
     }

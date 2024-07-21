@@ -11,6 +11,8 @@ class CreateCashiersTable extends Migration
         Schema::create('cashiers', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('phone')->nullable(); // Добавление колонки для номера телефона
+            $table->string('photo_url')->nullable(); // Добавление колонки для хранения URL фото
             $table->integer('total_exchanges')->default(0); // Количество обменов
             $table->decimal('total_amount', 15, 2)->default(0.00); // Сумма обменов
             $table->foreignId('exchanger_id')->constrained()->onDelete('cascade'); // Внешний ключ для связи с таблицей exchangers
