@@ -39,13 +39,13 @@
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">{{ $cashier->total_amount }}</td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
                                     <!-- Edit button -->
-                                    <a href="{{ route('cashiers.edit', $cashier->id) }}" class="text-blue-600 hover:text-blue-900 mr-4">{{ __('Edit') }}</a>
+                                    <a href="{{ route('cashiers.edit', $cashier->id) }}" class="inline-flex items-center rounded-md bg-green-50 px-3 py-1 text-xs font-medium text-green-500 ring-1 ring-inset ring-green-600/20">{{ __('Edit') }}</a>
 
                                     <!-- Delete button -->
                                     <form action="{{ route('cashiers.destroy', $cashier->id) }}" method="POST" style="display:inline;">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="text-red-600 hover:text-red-900">{{ __('Delete') }}</button>
+                                        <button type="submit" class="inline-flex items-center rounded-md bg-red-50 px-2 py-1 text-xs font-medium text-red-500 ring-1 ring-inset ring-red-600/10">{{ __('Delete') }}</button>
                                     </form>
                                 </td>
                             </tr>

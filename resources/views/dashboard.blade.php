@@ -1,13 +1,7 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
-    </x-slot>
 
-    <div class="py-12">
-
-        <!-- Форма для обмена валют -->
+    <div class="py-6">
+        <!-- Currency Exchange Form -->
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 mt-6">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
@@ -26,7 +20,7 @@
                                 <option value="JPY">JPY (Japanese Yen)</option>
                                 <option value="UAH">UAH (Ukrainian Hryvnia)</option>
                                 <option value="RUB">RUB (Russian Ruble)</option>
-                                <!-- Добавьте другие валюты по мере необходимости -->
+                                <!-- Add other currencies as needed -->
                             </select>
                         </div>
                         <div class="mb-4">
@@ -38,7 +32,7 @@
                                 <option value="JPY">JPY (Japanese Yen)</option>
                                 <option value="UAH">UAH (Ukrainian Hryvnia)</option>
                                 <option value="RUB">RUB (Russian Ruble)</option>
-                                <!-- Добавьте другие валюты по мере необходимости -->
+                                <!-- Add other currencies as needed -->
                             </select>
                         </div>
                         <div class="mb-4">
@@ -65,7 +59,7 @@
             </div>
         </div>
 
-        <!-- Статистика обменников и кассиров -->
+        <!-- Exchanger and Cashier Statistics -->
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 mt-6">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">

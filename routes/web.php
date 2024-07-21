@@ -7,9 +7,7 @@ use App\Http\Controllers\ExchangerController;
 use App\Http\Controllers\CashierController;
 
 Route::middleware(['auth'])->group(function () {
-    // Кассиры
     Route::resource('cashiers', CashierController::class);
-    // Обменники
     Route::resource('exchangers', ExchangerController::class);
 });
 
